@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import styles from '../styles/login.module.css';
+import Link from 'next/link';
 
 const HomePage = () => {
     const [username, setUsername] = useState("")
@@ -16,34 +18,42 @@ const HomePage = () => {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Username:
-                    <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </label>
-                <br />
-                <label>
-                    Password:
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange = {(e) => setPassword(e.target.value)}
-                    />
-                </label>
-                <br />
-                <input type = "submit" value = "Submit" />
+        <div className={styles.container}>
+            <form className={styles.form} onSubmit={handleSubmit}>
+                <div>
+                    <h1 className={styles.title}>Login </h1>
+                    <label className={styles.label}>
+                        Username
+                        <input
+                            type="text"
+                            name="username"
+                            className={styles.textInput}
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </label>
+                    <br />
+                    <label className={styles.label}>
+                        Password
+                        <input
+                            type="password"
+                            name="password"
+                            className={styles.textInput}
+                            value={password}
+                            onChange = {(e) => setPassword(e.target.value)}
+                        />
+                    </label>
+                    <br />
+                    <input type = "submit" value = "Login" className = {styles.submitInput}/>
+                </div>  
             </form>
-            {error && <p>{error}</p>}
-            <p>Don't have an account? </p>
-            <button>Sign up</button>
+            <div>
+                <p className = {styles.p}>Don't have an account? </p>
+                <Link href="/signup"><button className={styles.submitInput}>Sign up</button></Link>    
+            </div>  
+            <div className = {styles.center}>
+                {error && <p className={styles.errorMsg}>{error}</p>}
+            </div>    
         </div>
     );
 };
