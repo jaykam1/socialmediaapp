@@ -1,47 +1,38 @@
 import Layout from '../components/layout';
-import SearchBar from '../components/searchbar';
-import SearchResults from '../components/searchresults';
 import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
-import styles from '../styles/search.module.css'
-import {useState} from 'react';
+import styles from '../styles/liked.module.css'
+import {useState, useEffect} from 'react';
+import UserPosts from '../components/userposts';
 
-
-const Search = ({ user }) => {
-
-    const [searchResults, setSearchResults] = useState(null);
-
-    const handleSearch = async (searchTerm) => {
-        const requestBody = {
-            userId: user.userId,
-            searchTerm: searchTerm,
+const Liked = ({user}) => {
+    const [postData, setPostData] = useState(null);
+    useEffect(() => {
+        const allData = async () => {
+            const response =  await fetch(`api/getLikeData?user_id=${user?.userId}`);
+            if (response.ok) {
+                const data = await response.json();
+                setPostData(data);
+            }
         };
-        const response = await fetch('/api/getUsers', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(requestBody)
-        });
-        if (response.ok) {
-            const users = await response.json();
-            setSearchResults(users);
-        }
-    }
+        allData();
+    }, [user]);
+    
     
     return (
+    
     <div className={styles.container}>
         <Layout/>
         <div className={styles.center}>
             <main className={styles.content}>
-                <SearchBar onSearch={handleSearch}></SearchBar>
-                <hr></hr>
-                <SearchResults results={searchResults}></SearchResults>
-                
+                <UserPosts posts={postData} user_id={user.userId}/>
             </main>
         </div>
     </div>
-    );
-}
-export default Search
+    
+)};
+
+export default Liked
 
 export async function getServerSideProps(context) {
     const { req } = context;

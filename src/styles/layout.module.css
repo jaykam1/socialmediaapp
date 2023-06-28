@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    background-color: #282c34;
+  }
+
+  .center {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .sidenav {
+    width: 100px;
+    height: 100vh;
+    background-color: #2f3f58;
+    border-radius: 10px;
+    position: fixed;
+    
+  }
+  
+  .sidenav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidenav ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .content {
+    margin-left: 100px;
+    padding: 1em;
+    overflow-y: auto;
+    height: 100vh;
+  }
+  
+  .section {
+    margin-bottom: 1em;
+  }
+
+  .navIcon {
+    padding: 0.4em;
+    margin: 0.6em;
+    font-size: 2em;
+    color: rgb(5, 2, 42);
+    
+  }
+
+  .navIcon:hover {
+    transform: scale(1.1);
+    background-color: #273448;
+    border-radius: 5px;
+  }
+
+  .navIcon:active {
+    transform: scale(1.05);
+    color: rgb(5, 2, 30);
+  }

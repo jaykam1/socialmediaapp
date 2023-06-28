@@ -1,20 +1,38 @@
 import React, { useState } from 'react';
 import styles from '../styles/login.module.css';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const HomePage = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
+    const router = useRouter();
+    const loginUser = async () => {
+        const response = await fetch('api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({username, password})
+        });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    
-        if (!username || !password) {
-        setError("Please fill in both fields");
+        if (response.ok) {
+            router.push('/feed');
         } else {
-        console.log("Form submitted", {username, password});
+            const error = await response.text();
+            console.error('Login failed: ', error);
+            setError("Invalid username or password");
         }
+
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError("");
+        if (!username || !password) {
+            setError("Please fill in both fields");
+            return;
+        } 
+        await loginUser();
     };
 
     return (

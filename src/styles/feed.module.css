@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    background-color: #1e293b;
+    
+  }
+
+  .center {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .content {
+    margin-left: 100px;
+    padding: 1em;
+    overflow-y: auto;
+    height: 100vh;
+    overflow-y: visible;
+  }
+  
+  .section {
+    margin-bottom: 1em;
+  }
+
+
+
+  
+  
+  
+  
+  
+  
+  

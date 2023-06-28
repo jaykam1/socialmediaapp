@@ -19,7 +19,6 @@ const Signup = () => {
     if (response.ok) {
         const newUser = await response.json();
         router.push('/');
-        //Do something with newUser
     } else {
         const error = await response.text();
         console.error('Registration failed:', error);

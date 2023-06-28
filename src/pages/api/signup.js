@@ -12,7 +12,7 @@ export default async (req, res) => {
         }
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const result = await db.query('INSERT INTO users (username, hashed_password) VALUES ($1, $2) RETURNING id, username', [username, hashedPassword]);
+        const result = await db.query('INSERT INTO users (username, hashed_password, profile_picture_url) VALUES ($1, $2, $3) RETURNING id, username', [username, hashedPassword, "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"]);
         const newUser = result.rows[0];
         res.status(201).json(newUser);
     } catch (err) {

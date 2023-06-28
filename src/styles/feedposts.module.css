@@ -1,0 +1,16 @@
+.outerDiv { 
+    display: grid;
+    grid-template-columns: 720px;
+    grid-auto-rows: 500px;
+    grid-gap: 2rem;
+}
+
+.userPostImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.parent {
+    position: relative;
+}

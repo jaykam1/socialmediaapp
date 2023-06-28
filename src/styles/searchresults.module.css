@@ -1,0 +1,54 @@
+.resultsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+.resultItem {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 60px;
+    padding: 0px;
+    margin-bottom: 20px;
+}
+
+.resultItem:hover {
+    background-color: rgb(230, 228, 228);
+}
+
+.resultItem:active {
+    transform: scale(0.99);
+    background-color: rgb(191, 190, 193);
+  }
+
+.resultImage {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.resultUsername {
+    font-size: 1.5em;
+    color: black;
+}
+
+.nameBox {
+    position: relative;
+    height: 60px;
+    width: 50vw;
+    left: 70px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.link {
+    text-decoration: none;
+}

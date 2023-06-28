@@ -1,0 +1,28 @@
+.profileBanner {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    padding-right: 500px;
+    background-color: #2f3f58;
+    margin-bottom: 20px;
+    width: 45vw;
+    border-radius: 50px;
+  }
+  
+  .profileBannerPicture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .profileBannerName {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .profileBannerStats {
+    display: flex;
+    gap: 10px;
+  }

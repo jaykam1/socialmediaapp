@@ -1,47 +1,21 @@
 import Layout from '../components/layout';
-import SearchBar from '../components/searchbar';
-import SearchResults from '../components/searchresults';
+import AddPost from '../components/addpost'
 import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
-import styles from '../styles/search.module.css'
-import {useState} from 'react';
+import styles from '../styles/createpost.module.css'
 
-
-const Search = ({ user }) => {
-
-    const [searchResults, setSearchResults] = useState(null);
-
-    const handleSearch = async (searchTerm) => {
-        const requestBody = {
-            userId: user.userId,
-            searchTerm: searchTerm,
-        };
-        const response = await fetch('/api/getUsers', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(requestBody)
-        });
-        if (response.ok) {
-            const users = await response.json();
-            setSearchResults(users);
-        }
-    }
-    
-    return (
+const CreatePost = ({ user }) => (
     <div className={styles.container}>
         <Layout/>
         <div className={styles.center}>
             <main className={styles.content}>
-                <SearchBar onSearch={handleSearch}></SearchBar>
-                <hr></hr>
-                <SearchResults results={searchResults}></SearchResults>
-                
+                <AddPost user={user.userId}/>
             </main>
         </div>
     </div>
-    );
-}
-export default Search
+)
+
+export default CreatePost;
 
 export async function getServerSideProps(context) {
     const { req } = context;
